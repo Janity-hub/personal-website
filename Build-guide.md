@@ -110,6 +110,66 @@ Keywords: creativity, design, development, self-expression, personal brand
 
 ---
 
+## Fixing GitHub Pages Broken Styles (Hugo + Stack Theme)
+
+If your deployed website on GitHub Pages shows only plain black text, blue links, and no layout or styling, this usually means that CSS/JS assets weren’t loaded correctly.
+
+This guide explains how to fix that issue properly.
+
+### Why It Happens
+
+Hugo, by default, builds site URLs as if they were hosted on the root domain (e.g., `https://janity-hub.github.io/`), but your site is actually hosted in a subdirectory: <https://janity-hub.github.io/personal-website/>
+
+If Hugo is not configured correctly, it will generate paths like `/css/main.css`, which will try to load from:
+https://janity-hub.github.io/css/main.css → 404
+
+### Step-by-Step Fix (Works in VS Code with PowerShell)
+
+**1. Update `hugo.toml` baseURL**
+
+Open your root `hugo.toml` and ensure it contains the correct configuration:
+
+```toml
+baseURL = "https://janity-hub.github.io/personal-website/"
+relativeURLs = false
+canonifyURLs = true
+```
+
+- 'baseURL' must match your actual deployment path.
+- It must end with a slash '/'.
+
+2. Delete the existing 'public/' folder
+You must remove the old generated files before rebuilding.
+In the VS Code terminal (PowerShell), run:
+
+```bash
+Remove-Item -Recurse -Force .\public\
+```
+3. Rebuild the static site
+Let Hugo regenerate the entire public/ folder using your updated settings: 'hugo'
+You should now see a new 'public/' directory with updated HTML files.
+
+4. Push the 'public/' folder to the gh-pages branch
+This is how you deploy the fixed version:
+
+```powershell
+cd public
+git init
+git remote add origin https://github.com/Janity-hub/personal-website.git
+git checkout -b gh-pages
+git add .
+git commit -m "✅ Fix: baseURL corrected and site rebuilt"
+git push -f origin gh-pages
+cd ..
+```
+
+5. Force refresh the site
+Go to your site: <https://janity-hub.github.io/personal-website/>
+
+Then press Ctrl + F5 to bypass the browser cache and reload CSS/JS.
+
+---
+
 ## 项目简介：Fragments 个人展示网站
 
 这是一个基于 **Hugo + Stack 主题** 构建的静态网站，作为我 Janity 的个人博客、作品集、能力展示平台，未来将托管在 GitHub Pages 上对外公开。
