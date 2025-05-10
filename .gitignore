@@ -1,0 +1,14 @@
+# Hugo build output
+public/
+resources/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Hugo themes not tracked manually
+themes/* 
+!themes/hugo-theme-stack
