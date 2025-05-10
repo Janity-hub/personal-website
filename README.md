@@ -1,5 +1,84 @@
 # README.md
 
+## Project: Fragments – Personal Website
+
+This is a personal website built with **Hugo** and the **Stack theme**, designed for showcasing my blog posts, creative projects, skills, and personal identity. Authored by Janity, this site is intended for publication via **GitHub Pages**.
+
+## Tech Stack
+
+- Hugo Static Site Generator  
+- Stack Theme (via starter template)  
+- Git for version control  
+- VS Code + Git Bash / PowerShell  
+- Markdown for content writing  
+
+## Build Steps (with Git versioning)
+
+### Initialize Hugo project
+
+```bash
+hugo new site Fragments
+cd Fragments
+git init
+git add .
+git commit -m "Initial Hugo site"
+```
+
+### Add .gitignore
+
+```bash
+echo "public/" >> .gitignore  
+echo "resources/" >> .gitignore  
+echo ".DS_Store" >> .gitignore  
+echo "node_modules/" >> .gitignore  
+git add .gitignore  
+git commit -m "Add .gitignore to exclude build/cache files"  
+```
+
+### Import Stack Starter Template
+Download or clone the Stack Starter Template, then copy its config/, content/, static/, and assets/ folders into your Hugo site root.
+
+```bash
+git add .
+git commit -m "Add Stack starter template files"
+```
+
+### Run local preview
+
+```bash
+hugo server
+```
+
+Open: http://localhost:1313
+
+### Create your first article
+
+```bash
+hugo new posts/my-first-post.md
+```
+
+Edit it under content/posts/.
+
+### Deployment Plan: GitHub Pages
+> TODO (planned)
+
+- Connect to GitHub repository
+
+- Build output into public/
+
+- Push to gh-pages branch
+
+- Configure GitHub Pages to serve from that branch
+
+### Author
+Name: Janity
+
+Keywords: creativity, design, development, self-expression, personal brand
+
+> This project was created and maintained by me. Please credit appropriately if referenced or reused.
+
+---
+
 ## 项目简介：Fragments 个人展示网站
 
 这是一个基于 **Hugo + Stack 主题** 构建的静态网站，作为我 Janity 的个人博客、作品集、能力展示平台，未来将托管在 GitHub Pages 上对外公开。
@@ -24,43 +103,23 @@ git add .
 git commit -m "初始 Hugo 项目"
 ```
 
-### 添加 Stack 主题（子模块方式）
+### 添加 .gitignore文件
 
 ```bash
-git submodule add https://github.com/CaiJimmy/hugo-theme-stack themes/hugo-theme-stack
-git add .gitmodules themes/hugo-theme-stack
-git commit -m "添加 Stack 主题为 Git 子模块"
+echo "public/" >> .gitignore  
+echo "resources/" >> .gitignore  
+echo ".DS_Store" >> .gitignore  
+echo "node_modules/" >> .gitignore  
+git add .gitignore  
+git commit -m "添加 .gitignore 忽略构建和缓存文件"  
 ```
 
-### 设置主题（编辑 hugo.toml 或 config.toml）
+### 设置 Stack 官方配置模板
 
-```toml
-theme = "hugo-theme-stack"
-```
-
-### 添加 `.gitignore`
-
+将 Stack starter 项目的 config、content、static、assets 文件夹内容复制到当前项目中。
 ```bash
-echo "public/" >> .gitignore
-echo "resources/" >> .gitignore
-echo ".DS_Store" >> .gitignore
-echo "themes/*" >> .gitignore
-echo "!themes/hugo-theme-stack" >> .gitignore
-git add .gitignore
-git commit -m "添加 .gitignore 忽略编译文件和缓存"
-```
-
-### 加载 Stack 官方配置模板（解决初始页面空白）
-
-```bash
-git clone https://github.com/CaiJimmy/hugo-theme-stack-starter.git tmp
-cp -r tmp/config ./
-cp -r tmp/content ./
-cp -r tmp/assets ./
-cp -r tmp/static ./
-rm -rf tmp
-git add config content assets static
-git commit -m "导入 Stack starter 配置"
+git add . 
+git commit -m "添加stack starter模板"  
 ```
 
 ### 本地预览网站
