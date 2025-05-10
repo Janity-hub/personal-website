@@ -12,3 +12,10 @@ Here I share my:
 🛠️ **Built with**: Hugo + Stack Theme  
 📁 **Source code**: You're looking at it  
 📮 **Contact**: janity@example.com
+
+## Build & Deployment
+
+> Looking for the full Hugo + GitHub Pages setup?
+
+👉 See the full [Build Guide](./Build-guide.md) for step-by-step setup, baseURL fixes, and troubleshooting.
+
