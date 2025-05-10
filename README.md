@@ -17,5 +17,5 @@ Here I share my:
 
 > Looking for the full Hugo + GitHub Pages setup?
 
-👉 See the full [Build Guide](./Build-guide.md) for step-by-step setup, baseURL fixes, and troubleshooting.
+👉 See the full [Hugo-Setup-Guide](./Hugo-Setup-Guide.md) for step-by-step setup, baseURL fixes, and troubleshooting.
 
